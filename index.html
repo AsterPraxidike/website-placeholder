@@ -99,16 +99,12 @@
       display: block;
     }
 
-    .panel,
-    .side-card {
+    .panel {
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(9, 10, 15, 0.72);
       border-radius: 28px;
       box-shadow: 0 30px 90px rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
-    }
-
-    .panel {
       padding: clamp(28px, 5vw, 54px);
     }
 
@@ -220,38 +216,6 @@
       box-shadow: 0 22px 60px rgba(221,221,255,0.24);
     }
 
-    .side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .side-card {
-      padding: 28px;
-    }
-
-    .status {
-      min-height: 240px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      background:
-        radial-gradient(circle at top, rgba(221,221,255,0.12), transparent 55%),
-        rgba(9, 10, 15, 0.72);
-    }
-
-    .big {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 0.95;
-      font-weight: 950;
-      letter-spacing: -0.06em;
-    }
-
-    .small {
-      margin-top: 14px;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.6;
-    }
-
     footer {
       margin-top: 24px;
       color: rgba(255,255,255,0.56);
@@ -271,8 +235,7 @@
         padding: 24px 0 52px;
       }
 
-      .panel,
-      .side-card {
+      .panel {
         border-radius: 22px;
       }
 
@@ -335,7 +298,7 @@
             This domain is <span class="gradient">for sale</span>
           </h1>
 
-
+          <div class="domain" id="domainName">this domain</div>
 
           <p class="lead">
             A clean domain matters. If this address is relevant to your business,
@@ -374,8 +337,6 @@
             </a>
           </div>
         </div>
-
-        
       </section>
 
       <footer id="footerText" aria-hidden="true">
@@ -427,11 +388,15 @@
       const domain = hostname.replace(/^www\./, "");
 
       document.title = domain + " is available for sale";
+
       document.getElementById("domainName").textContent = domain;
       document.getElementById("footerText").innerHTML = "&nbsp;";
 
-      document.getElementById("mainButton").href =
-        contactPage + "?domain=" + encodeURIComponent(domain);
+      const contactUrl = new URL(contactPage);
+      contactUrl.searchParams.set("domain", domain);
+      contactUrl.searchParams.set("from", window.location.origin);
+
+      document.getElementById("mainButton").href = contactUrl.toString();
     });
   </script>
 </body>

@@ -86,7 +86,7 @@
     .page {
       position: relative;
       z-index: 5;
-      width: min(1100px, calc(100% - 28px));
+      width: min(880px, calc(100% - 28px));
       min-height: 100vh;
       margin: 0 auto;
       display: grid;
@@ -96,10 +96,7 @@
 
     .layout {
       width: 100%;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-      align-items: stretch;
+      display: block;
     }
 
     .panel,
@@ -263,10 +260,6 @@
     }
 
     @media (max-width: 900px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
       .options {
         grid-template-columns: 1fr;
       }
@@ -274,7 +267,7 @@
 
     @media (max-width: 620px) {
       .page {
-        width: min(100% - 24px, 1100px);
+        width: min(100% - 24px, 880px);
         padding: 24px 0 52px;
       }
 
@@ -342,7 +335,7 @@
             This domain is <span class="gradient">for sale</span>
           </h1>
 
-          <div class="domain" id="domainName">this domain</div>
+
 
           <p class="lead">
             A clean domain matters. If this address is relevant to your business,
@@ -382,23 +375,7 @@
           </div>
         </div>
 
-        <aside class="side">
-          <div class="side-card status">
-            <div>
-              <div class="big">Available now.</div>
-              <div class="small">
-                Purchase the domain, fix the web presence, or start with both.
-              </div>
-            </div>
-          </div>
-
-          <div class="side-card">
-            <strong>Plain-English help</strong>
-            <div class="small">
-              Domains, websites, redirects, hosting, broken pages, and messy web setups.
-            </div>
-          </div>
-        </aside>
+        
       </section>
 
       <footer id="footerText" aria-hidden="true">
